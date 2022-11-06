@@ -1,21 +1,30 @@
 export 'package:state_notifier/state_notifier.dart' hide Listener, LocatorMixin;
 
-// export 'src/async_notifier.dart'
-//     hide
-//         AsyncNotifierProviderImpl,
-//         AutoDisposeAsyncNotifierProviderImpl,
-//         AutoDisposeFamilyAsyncNotifierProviderImpl,
-//         FamilyAsyncNotifierProviderImpl,
-//         AsyncNotifierBase,
-//         AsyncNotifierProviderBase;
+export 'src/async_notifier.dart'
+    hide
+        AsyncNotifierProviderImpl,
+        AutoDisposeAsyncNotifierProviderImpl,
+        AutoDisposeFamilyAsyncNotifierProviderImpl,
+        FamilyAsyncNotifierProviderImpl,
+        AsyncNotifierBase,
+        AsyncNotifierProviderBase,
+        BuildlessAsyncNotifier,
+        BuildlessAutoDisposeAsyncNotifier,
+        FutureHandlerProviderElementMixin;
 
 export 'src/common.dart' hide AsyncTransition;
 
 export 'src/framework.dart'
     hide
+        debugCanModifyProviders,
+        vsync,
+        vsyncOverride,
+        ValueProviderElement,
+        ValueProvider,
         FamilyCreate,
         AsyncSelector,
         FamilyBase,
+        FamilyOverrideImpl,
         AutoDisposeProviderElementMixin,
         FamilyOverride,
         NotifierFamilyBase,
@@ -28,19 +37,21 @@ export 'src/framework.dart'
         handleFireImmediately,
         Create,
         Node,
-        ProviderElementProxy;
+        ProviderElementProxy,
+        OnError;
 
 export 'src/future_provider.dart';
 
-// TODO export those APIs once the code-generator is ready
-// export 'src/notifier.dart'
-//     hide
-//         NotifierBase,
-//         NotifierProviderBase,
-//         AutoDisposeFamilyNotifierProviderImpl,
-//         AutoDisposeNotifierProviderImpl,
-//         FamilyNotifierProviderImpl,
-//         NotifierProviderImpl;
+export 'src/notifier.dart'
+    hide
+        NotifierBase,
+        NotifierProviderBase,
+        AutoDisposeFamilyNotifierProviderImpl,
+        AutoDisposeNotifierProviderImpl,
+        FamilyNotifierProviderImpl,
+        NotifierProviderImpl,
+        BuildlessAutoDisposeNotifier,
+        BuildlessNotifier;
 
 export 'src/provider.dart' hide InternalProvider;
 export 'src/state_controller.dart';

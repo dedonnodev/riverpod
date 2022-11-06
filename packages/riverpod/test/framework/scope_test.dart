@@ -300,6 +300,23 @@ Future<void> main() async {
   });
 
   group('When specifying "dependencies"', () {
+    test(
+        'a family can read itelf, even if not present in the dependencies list',
+        () {
+      final dep = Provider((ref) => 'foo');
+      late final ProviderFamily<String, int> provider;
+      provider = Provider.family<String, int>(
+        (ref, id) {
+          if (id == 0) return ref.watch(dep);
+          return ref.watch(provider(0));
+        },
+        dependencies: [dep],
+      );
+      final container = createContainer();
+
+      expect(container.read(provider(42)), 'foo');
+    });
+
     test('auto scope direct provider dependencies', () {
       final dep = Provider((ref) => 0, name: 'dep');
       var buildCount = 0;
@@ -738,6 +755,7 @@ final b = Provider(
     final a = Provider((ref) => 0);
 
     expect(
+      // ignore: deprecated_member_use_from_same_package
       () => provider.overrideWithProvider(
         Provider((ref) => 0, dependencies: [a]),
       ),
@@ -754,6 +772,7 @@ final b = Provider(
     final root = createContainer(
       overrides: [
         b.overrideWithValue(21),
+        // ignore: deprecated_member_use_from_same_package
         c.overrideWithProvider(Provider((ref) => ref.watch(another) + 10)),
       ],
     );

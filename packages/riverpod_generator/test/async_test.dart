@@ -1,6 +1,6 @@
 // ignore_for_file: omit_local_variable_types, unused_local_variable
 
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:test/test.dart';
 
 import 'integration/async.dart';
@@ -8,7 +8,7 @@ import 'utils.dart';
 
 void main() {
   test(
-      'Creates a FutureProvider<T> if @provider is used on a synchronous function',
+      'Creates a FutureProvider<T> if @riverpod is used on a FutureOr function',
       () {
     final container = createContainer();
 
@@ -27,7 +27,7 @@ void main() {
   });
 
   test(
-      'Creates a Provider.family<T> if @provider is used on a synchronous function with parameters',
+      'Creates a Provider.family<T> if @riverpod is used on a synchronous function with parameters',
       () {
     final container = createContainer();
 
